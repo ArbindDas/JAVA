@@ -2,7 +2,7 @@ package CollectionFramework.List.Projects.ScholarSync;
 
 public class Student {
 
-    private String id;
+    private int id;
     private String name;
     private int age;
     private String course;
@@ -11,7 +11,7 @@ public class Student {
 
     public Student(){}
 
-    public Student( String id , String name , int age , String course ) {
+    public Student( int id , String name , int age , String course ) {
         this.id = id;
         this.age= age;
         this.name = name;
@@ -19,23 +19,9 @@ public class Student {
     }
 
 
-    public void setID( String id ) {
-        this.id=id;
+    public int getId( ) {
+        return id;
     }
-
-    public void setName( String name ) {
-        this.name=name;
-    }
-
-    public void setAge( int age ) {
-        this.age=age;
-    }
-
-    public void setCourse( String course ) {
-        this.course=course;
-    }
-
-
 
     public String getName( ) {
         return name;
@@ -49,12 +35,25 @@ public class Student {
         return course;
     }
 
-    @Override
-    public String toString() {
-        return "id: " + id + ", Name: " + name + ", Age: " + age + ", Course: " + course;
+    public void setId( int id ) {
+        this.id = id;
     }
 
-    public String getId( ) {
-        return getId ();
+    public void setName( String name ) {
+        this.name = name;
     }
+
+    public void setAge( int age ) {
+        this.age = age;
+    }
+
+    public void setCourse( String course ) {
+        this.course = course;
+    }
+
+    @Override
+    public String toString() {
+        return STR."ID: \{id}, Name: \{name}, Age: \{age}, Course: \{course}";
+    }
+
 }

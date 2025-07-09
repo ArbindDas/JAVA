@@ -1,166 +1,169 @@
 package CollectionFramework.List.Projects.ScholarSync;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
+    public  static  int getIntegerInput(String prompt){
+        System.out.println(prompt);
+        try {
 
-    private static Scanner scanner = new Scanner ( System.in );
-    private static List < Student > students = new ArrayList <> ( );
+            return Integer.parseInt( sc.nextLine() );
+
+        }catch (NumberFormatException e){
+            throw new NumberFormatException(e.getMessage());
+        }
+    }
+
+    public static String getStringInput(String prompt){
+        System.out.println(prompt);
+        return sc.nextLine();
+    }
+    private static final Scanner sc = new Scanner( System.in );
+
+    public static final List < Student > studentList = new ArrayList <>();
+
+    private static final Map < String, String > studentMap = new HashMap <>();
 
     public static void main( String[] args ) {
 
-        boolean running = true;
-        while ( running ) {
-            DisplayMenu ( );
+        while ( true ){
+            Display();
 
-            int choice = getIntInput ( "Enter the choice" );
+            String Choice = getStringInput( "Enter the choice " );
 
+            switch (Choice.toLowerCase().trim()){
 
-            switch (choice) {
-                case 1:
-                    addStudent ( );
-                    break;
-                case 2:
-                    removeStudent ( );
-                    break;
+                case "addstudent" -> addstudent();
 
-                case 3:
-                    updateStudent ( );
-                    break;
+                case "removestudent" -> removestudent();
 
-                case 4:
-                    viewAllStudents ( );
-                    break;
+                case "viewstudent" -> viewstudent();
 
-                case 5:
-                    searchStudent ( );
-                    break;
+                case  "countstudent" -> countstudent();
 
-                case 6:
-                    sortStudents ( );
-                    break;
+                case "updatestudent" -> updatestudent();
 
-
-                default:
-                    System.out.println ( "Invalid choice. Please try again." );
-            }
-
-        }
-
-
-    }
-
-    private static void sortStudents( ) {
-    }
-
-    private static void searchStudent( ) {
-    }
-
-    private static void viewAllStudents( ) {
-    }
-
-    private static void updateStudent( ) {
-
-        System.out.println("\n--- Update Student Info ---");
-        String id = getStringInput("Enter student ID to update: ");
-
-
-        Student foundStudent = null;
-
-
-        for ( Student student : students ){
-            if (student.getId ().equalsIgnoreCase ( id )){
-                foundStudent = student;
-                break;
+                case "exit" -> {
+                    try {
+                        Thread.sleep( 10 );
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException( e );
+                    }
+                    System.out.println("Exiting......");
+                    return;
+                }
             }
         }
-        if (foundStudent==null){
-            System.out.println("Student with ID " + id + " not found.");
+
+
+
+    }
+
+    private static void updatestudent( ) {
+        Checker( studentList );
+        System.out.println("updating.....");
+
+        int id = getIntegerInput( "Enter the id to be updated...." );
+
+
+
+
+
+
+       Student foundStudent = null;
+
+       for ( Student student : studentList ){
+           if (student.getId()==id){
+               foundStudent = student;
+               break;
+           }
+       }
+
+       if (foundStudent==null){
+           System.out.println("there is no student with id : "+ id);
+       }
+
+        System.out.println("current student info is : "+ foundStudent);
+        System.out.println("now enter the new values ...");
+
+
+
+        String newName = getStringInput( "Enter the new name["+foundStudent.getName() + "]" );
+        if (!newName.isEmpty()){
+            foundStudent.setName( newName );
+        }
+
+        String newAge = getStringInput( "Enter the new age["+foundStudent.getAge()+"]" );
+        if (!newAge.isEmpty()){
+            foundStudent.setAge(Integer.parseInt( newAge ));
+        }
+
+        String newCourse = getStringInput( "Enter the new Course["+foundStudent.getCourse()+"]" );
+        if (!newCourse.isEmpty()){
+            foundStudent.setCourse( newCourse );
+        }
+
+        System.out.println("Student information updated successfully!");
+        System.out.println("updated student is : "+ foundStudent);
+
+    }
+
+    private static void countstudent( ) {
+       long totalStudent = studentList.size();
+        System.out.println( STR."the total student in your list is => \{totalStudent}" );
+    }
+
+    private static void viewstudent( ) {
+        Checker(studentList);
+        System.out.println("the student are ");
+        for ( Student student : studentList ){
+            System.out.println(student);
+        }
+    }
+
+    private static void Checker( List< Student> studentList ) {
+        if (studentList.isEmpty()){
+            System.out.println("there is no student in your list please add first the student and then do this task");
             return;
         }
-
-        System.out.println ("current student information : "+ foundStudent );
-        System.out.println("Enter new information (leave blank to keep current):");
-
-
-        String name = getStringInput ( "Enter the name [" + foundStudent.getName () + "]: ");
-        if (!name.isEmpty ()){
-            foundStudent.setName ( name );
-        }
-
     }
 
-    private static void removeStudent( ) {
-        System.out.println ("\n---- Remove Student----" );
-        String id = getStringInput ( "Enter the student id to remove...." );
-
+    private static void removestudent( ) {
+        System.out.println(" Removing student ");
+        Checker( studentList );
+        int id = getIntegerInput( "Enter the student id to be removed" );
         boolean removed = false;
-
-        for ( int i = 0; i<students.size (); i++ ){
-            if (students.get ( i ).getId ().equalsIgnoreCase ( id )){
-                students.remove ( i );
-                removed=true;
+        for ( int i = 0; i<studentList.size(); i++ ){
+            if (studentList.get( i ).getId() == id){
+                studentList.remove( i );
+                removed = true;
                 break;
             }
         }
-        if (removed){
-            System.out.println ("Student removed successfully ....." );
-        }else {
-            System.out.println ("Student with id : "+ id + " not found");
-        }
+        System.out.println( STR."Successfully student is removed id is \{id}" );
     }
 
-    private static void addStudent( ) {
-        System.out.println ( "\n--- Add New Student ---" );
-        String id = getStringInput ( "Enter student ID:" );
-        for ( Student student : students ) {
-            if (student.getId ( ).equalsIgnoreCase ( id )) {
-                System.out.println ( "Student with this ID already exists!" );
-                return;
-            }
-        }
-        String name = getStringInput ( "Enter the student name..." );
-        int age = getIntInput ( "Enter the student age.." );
-        String course = getStringInput ( "Enter the course name ....." );
-        students.add ( new Student ( id , name , age , course ) );
-        System.out.println ( "Student added Successfully ...." );
+    private static void addstudent( ) {
+
+        System.out.println("Add A New Student");
+
+        int id = getIntegerInput( "Enter the Id" );
+        String name = getStringInput( "Enter the Name" );
+        int age = getIntegerInput( "Enter the age" );
+        String course = getStringInput( "Enter the Course" );
+
+
+        studentList.add( new Student(id , name , age , course) );
     }
 
-
-    private static void DisplayMenu( ) {
-        System.out.println ( "\n.......Student Management System......" );
-        System.out.println ( "1. Add new Student" );
-        System.out.println ( "2.Remove Student by Id" );
-        System.out.println ( "3.update Student Info" );
-        System.out.println ( "4. view all Student" );
-        System.out.println ( "5.search Student by ID or Name" );
-        System.out.println ( "6. Student" );
-        System.out.println ( "7. Exit" );
-        System.out.println ( "===================================" );
-
-    }
-
-    private static int getIntInput( String prompt ) {
-        while ( true ) {
-            try {
-                System.out.println ( prompt );
-                return Integer.parseInt ( scanner.nextLine ( ) );
-            } catch (NumberFormatException e) {
-                throw new RuntimeException ( e );
-            }
-        }
-    }
-
-    private static String getStringInput( String prompt ) {
-        while ( true ) {
-            try {
-                System.out.println ( prompt );
-                return scanner.nextLine ( );
-            } catch (RuntimeException e) {
-                throw new RuntimeException ( e );
-            }
-        }
+    public static void Display(){
+        System.out.println("------------- The ScholarSync Project --------------");
+        System.out.println("addstudent");
+        System.out.println("removestudent");
+        System.out.println("viewstudent");
+        System.out.println("coutstudent");
+        System.out.println("updatestudent");
+        System.out.println("5.Sort Student");
+        System.out.println("6.Exit");
     }
 }
