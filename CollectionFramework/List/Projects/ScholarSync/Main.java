@@ -97,9 +97,9 @@ public class Main{
         }
         if (foundedStudent!=null){
             System.out.println(STR."We are going to update student : \{foundedStudent.getId()}");
-            Integer age=getIntegerInput("Enter the newAge ["+foundedStudent.getAge()+"]:");
-            String name=getStringInput("Enter the new Name["+foundedStudent.getName()+"]");
-            String course=getStringInput("Enter the new Course ["+foundedStudent.getCourse()+"]");
+            Integer age=getIntegerInput(STR."Enter the newAge [\{foundedStudent.getAge()}]:");
+            String name=getStringInput(STR."Enter the new Name[\{foundedStudent.getName()}]");
+            String course=getStringInput(STR."Enter the new Course [\{foundedStudent.getCourse()}]");
 
             foundedStudent.setAge(age);
             foundedStudent.setName(name);
