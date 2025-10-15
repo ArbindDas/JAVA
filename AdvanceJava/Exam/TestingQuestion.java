@@ -4,6 +4,5 @@ public class TestingQuestion {
      void main() {
 
 
-         new Employee();
     }
 }
