@@ -10,7 +10,7 @@ public class Main {
             }
         });
 
-        System.out.println("Main thread ends");
+        System.out.println("Test.Main thread ends");
 
         // Wait for virtual thread to finish
         try {

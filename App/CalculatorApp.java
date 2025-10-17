@@ -41,7 +41,7 @@ public class CalculatorApp extends JFrame implements ActionListener {
     }
 
     private void initComponents() {
-        // Main panel with border layout
+        // Test.Main panel with border layout
         JPanel mainPanel = new JPanel(new BorderLayout(15, 15));
         mainPanel.setBorder(BorderFactory.createEmptyBorder(25, 25, 25, 25));
         mainPanel.setBackground(BACKGROUND_COLOR);
@@ -72,7 +72,7 @@ public class CalculatorApp extends JFrame implements ActionListener {
         operationLabel.setHorizontalAlignment(JLabel.RIGHT);
         operationLabel.setPreferredSize(new Dimension(320, 25));
 
-        // Main display field
+        // Test.Main display field
         display = new JTextField();
         display.setFont(new Font("Arial", Font.BOLD, 48));
         display.setHorizontalAlignment(JTextField.RIGHT);

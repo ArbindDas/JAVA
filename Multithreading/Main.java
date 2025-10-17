@@ -21,9 +21,9 @@ public class Main {
         };
         thread.start();
 
-        // Main thread can also do something
+        // Test.Main thread can also do something
         for (int i = 1; i <= 5; i++) {
-            System.out.println("Main thread: Count " + i);
+            System.out.println("Test.Main thread: Count " + i);
             try {
                 Thread.sleep(700); // Slightly longer pause
             } catch (InterruptedException e) {
