@@ -1,6 +1,6 @@
 package CollectionFramework.List.Projects.ScholarSync;
 
-public class Student {
+sealed class Student  permits Scholar  ,Graduate{
 
     private Integer id;
     private String name;
@@ -59,4 +59,6 @@ public class Student {
             """;
     }
 
+    public void show() {
+    }
 }
