@@ -8,5 +8,9 @@ public class Main
 
         BiFunction<Integer  , Integer , Integer> add =Integer :: sum;
         System.out.println (add.apply ( 10, 10 ) );
+
+
+        BiFunction<Integer , Integer , Integer>minus = Integer::min;
+        System.out.println(minus.apply(10 , 10));
     }
 }
