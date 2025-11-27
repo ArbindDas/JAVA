@@ -62,6 +62,11 @@ class Student{
     }
 
 
+    static{
+        System.out.println("jai.....");
+    }
+
+
 }
 public class ConstructorTypes {
    public static void main(String[] args){
