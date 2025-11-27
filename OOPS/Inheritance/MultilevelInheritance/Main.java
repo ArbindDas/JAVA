@@ -16,7 +16,7 @@ public class Main {
         emp.show();
 
 
-        manager.n
+        
          
     }
 }
