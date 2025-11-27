@@ -12,5 +12,9 @@ public class Main
 
         BiFunction<Integer , Integer , Integer>minus = Integer::min;
         System.out.println(minus.apply(10 , 10));
+
+
+
+        System.out.println("jai shree ram its work");
     }
 }
