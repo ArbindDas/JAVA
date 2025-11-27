@@ -9,15 +9,25 @@ abstract class ATM {
 
     // Concrete method → common functionality provided to all ATMs
     // Purpose: Shared functionality that does not change per ATM
-    void insertCard() {
+    // void insertCard() {
+    //     System.out.println("Card inserted");
+    // }
+
+     // Concrete method → common functionality that should never change
+    // Purpose: Ensures all ATMs have the same card insertion process
+    final void insertCard() {
         System.out.println("Card inserted");
     }
+
+    // “We use final methods in abstract classes to lock critical behavior so subclasses cannot modify it, ensuring consistency and security.
 
     // Concrete method → common functionality
     // Purpose: Shared logic to verify PIN, same for all ATMs
     void enterPin() {
         System.out.println("PIN verified");
     }
+
+    
 }
 
 // Concrete subclass representing SBI ATM
@@ -67,3 +77,19 @@ public class Main {
         // 4. Scalable: new ATM types can be added easily without changing main logic
     }
 }
+
+
+
+// Abstract Classes and Methods
+
+// Abstract classes can have:
+
+// Abstract methods → must be implemented by subclasses
+
+// Concrete methods → fully implemented methods
+
+// Static methods → allowed
+
+// Final methods → allowed
+
+// Default keyword → ❌ Not allowed in abstract classes
