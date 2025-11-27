@@ -56,8 +56,11 @@ public class User {
         issuedBooks.remove(book);
     }
 
+   
     @Override
     public String toString(){
-        return STR."User{id=\{id}, name='\{name}', issuedBooks=\{issuedBooks}}";
+        return "User{id="+ id + ", name  = '" + name + "issuedBook=" + issuedBooks+"}";
     }
+
+
 }

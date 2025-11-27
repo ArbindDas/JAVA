@@ -5,7 +5,7 @@ public class Main {
     public static void main(String[] args) {
         Thread vthread = Thread.ofVirtual().start(() -> {
             for (int i = 0; i < 10; i++) {
-                System.out.println(STR."Virtual thread count: \{i}");
+                System.out.println("Virtual thread count : "+i);
                 try { Thread.sleep(1000); } catch (InterruptedException _) {}
             }
         });

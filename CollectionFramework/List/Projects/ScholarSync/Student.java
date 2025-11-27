@@ -49,15 +49,16 @@ sealed class Student  permits Scholar  ,Graduate{
     }
 
     @Override
-    public String toString() {
-        return STR."""
+public String toString() {
+    return String.format("""
             ---------------------------
-            ID     : \{id}
-            Name   : \{name}
-            Age    : \{age}
-            Course : \{course}
-            """;
-    }
+            ID     : %d
+            Name   : %s
+            Age    : %d
+            Course : %s
+            """, id, name, age, course);
+}
+
 
     public void show() {
     }

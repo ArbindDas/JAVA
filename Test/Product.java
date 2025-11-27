@@ -37,8 +37,9 @@ public sealed class Product permits ProductService {
         this.productPrice = productPrice;
     }
 
-    @Override
-    public String toString() {
-        return STR."Product{id=\{id}, productName='\{productName}', productPrice=\{productPrice}}";
-    }
+   @Override
+public String toString() {
+    return "Product{id=" + id + ", productName='" + productName + "', productPrice=" + productPrice + "}";
+}
+
 }

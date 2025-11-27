@@ -20,7 +20,8 @@ public class Main {
         library.issuedBook(1 , 1);
 
         // Check availability
-        System.out.println(STR."Is Book 2 available ? \{library.isBookAvailable(1)}");
+       System.out.println("Is Book 2 available? " + library.isBookAvailable(1));
+
 
         library.displayBook();
 

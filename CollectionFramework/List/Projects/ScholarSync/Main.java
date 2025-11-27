@@ -56,7 +56,7 @@ public class Main{
 
     private static void TotalStudent(){
         long total=students.size();
-        System.out.println(STR."The total student is : \{total}");
+        System.out.println("the student is : "+total);
     }
 
     private static void RemoveStudent(){
@@ -73,12 +73,12 @@ public class Main{
 
                 break;
             } else{
-                System.out.println(STR."Student is not found with id : \{id}");
+                System.out.println("Studenr is not found : "+ id);
             }
             if (removed){
                 success.put("the student successfully removed " , students.get(i));
             } else{
-                System.out.println(STR."Student is not found with id : \{id}");
+                System.out.println("Studenr is not found : "+ id);
             }
         }
     }
@@ -95,21 +95,24 @@ public class Main{
                 foundedStudent=students.get(i);
             }
         }
-        if (foundedStudent!=null){
-            System.out.println(STR."We are going to update student : \{foundedStudent.getId()}");
-            Integer age=getIntegerInput(STR."Enter the newAge [\{foundedStudent.getAge()}]:");
-            String name=getStringInput(STR."Enter the new Name[\{foundedStudent.getName()}]");
-            String course=getStringInput(STR."Enter the new Course [\{foundedStudent.getCourse()}]");
 
-            foundedStudent.setAge(age);
-            foundedStudent.setName(name);
-            foundedStudent.setCourse(course);
+       if (foundedStudent != null) {
+    System.out.println("We are going to update student: " + foundedStudent.getId());
+    
+    Integer age = getIntegerInput("Enter the new Age [" + foundedStudent.getAge() + "]:");
+    String name = getStringInput("Enter the new Name [" + foundedStudent.getName() + "]:");
+    String course = getStringInput("Enter the new Course [" + foundedStudent.getCourse() + "]:");
+    
+    foundedStudent.setAge(age);
+    foundedStudent.setName(name);
+    foundedStudent.setCourse(course);
+    
+    success.put("The student is successfully updated", foundedStudent);
 
-            success.put("the student is successfully updated" , foundedStudent);
+} else {
+    System.out.println("There is no student with id: " + id);
+}
 
-        } else{
-            System.out.println(STR."there is no student with id : \{id}");
-        }
 
     }
 

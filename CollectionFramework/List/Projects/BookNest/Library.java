@@ -77,12 +77,15 @@ public class Library {
     }
 
     // Display all books
-    public void displayBook(){
-        for(Book book  : books.values()){
-            String status = book.isIssued() ? "issued" : "Available";
-            System.out.println(STR."\{book.getId()}: \{book.getTitle()} by \{book.getAuthor()} - \{status}");
-        }
+ public void displayBook() {
+    for (Book book : books.values()) {
+        String status = book.isIssued() ? "issued" : "Available";
+        System.out.println(
+            book.getId() + ": " + book.getTitle() + " by " + book.getAuthor() + " - " + status
+        );
     }
+}
+
 
 
 
